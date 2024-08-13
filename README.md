@@ -1,7 +1,3 @@
-Here's the revised version of your document with updated credits and more accessible language:
-
----
-
 ![demo-gif](demo.gif)
 
 ## Disclaimer
