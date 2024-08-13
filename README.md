@@ -1,179 +1,193 @@
+Here's the revised version of your document with updated credits and more accessible language:
+
+---
+
 ![demo-gif](demo.gif)
 
-
 ## Disclaimer
-This software is meant to be a productive contribution to the rapidly growing AI-generated media industry. It will help artists with tasks such as animating a custom character or using the character as a model for clothing etc.
 
-The developers of this software are aware of its possible unethical applications and are committed to take preventative measures against them. It has a built-in check which prevents the program from working on inappropriate media including but not limited to nudity, graphic content, sensitive material such as war footage etc. We will continue to develop this project in the positive direction while adhering to law and ethics. This project may be shut down or include watermarks on the output if requested by law.
+This software is designed to be a valuable tool in the expanding field of AI-generated media. It aims to assist artists with tasks such as animating custom characters or using characters as models for clothing, among other applications.
 
-Users of this software are expected to use this software responsibly while abiding the local law. If face of a real person is being used, users are suggested to get consent from the concerned person and clearly mention that it is a deepfake when posting content online. Developers of this software will not be responsible for actions of end-users.
+We acknowledge the potential for misuse and are committed to preventing unethical applications. The software includes safeguards to prevent its use with inappropriate media, such as nudity, graphic content, or sensitive material like war footage. We will continue to develop the project responsibly and in compliance with laws and ethical standards. The software may be shut down or include watermarks if required by legal authorities.
 
-## How do I install it?
+Users are expected to use the software responsibly and in accordance with local laws. If using images of real people, we recommend obtaining consent and clearly labeling the content as a deepfake when sharing it online. The developers are not responsible for the actions of end-users.
 
+## Installation Instructions
 
-### Basic: It is more likely to work on your computer but it will also be very slow. You can follow instructions for the basic install (This usually runs via **CPU**)
-#### 1.Setup your platform
--   python (3.10 recommended)
--   pip
--   git
--   [ffmpeg](https://www.youtube.com/watch?v=OlNWCpFdVMA) 
--   [visual studio 2022 runtimes (windows)](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
-#### 2. Clone Repository
-    https://github.com/hacksider/Deep-Live-Cam.git
+### Basic Installation
+
+This method is likely to work on your computer but may be slower. It typically runs via **CPU**.
+
+#### 1. Set Up Your Platform
+
+- Python (version 3.10 recommended)
+- Pip
+- Git
+- [FFmpeg](https://www.youtube.com/watch?v=OlNWCpFdVMA)
+- [Visual Studio 2022 Runtimes (Windows)](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+
+#### 2. Clone the Repository
+
+```bash
+git clone https://github.com/DeSu406/Deep-Live-Cam.git
+cd Deep-Live-Cam
+```
 
 #### 3. Download Models
 
- 1. [GFPGANv1.4](https://huggingface.co/hacksider/deep-live-cam/resolve/main/GFPGANv1.4.pth)
- 2. [inswapper_128_fp16.onnx](https://huggingface.co/hacksider/deep-live-cam/resolve/main/inswapper_128_fp16.onnx)
+1. [GFPGANv1.4](https://huggingface.co/hacksider/deep-live-cam/resolve/main/GFPGANv1.4.pth)
+2. [inswapper_128_fp16.onnx](https://huggingface.co/hacksider/deep-live-cam/resolve/main/inswapper_128_fp16.onnx)
 
-Then put those 2 files on the "**models**" folder
+Place these files in the "**models**" folder.
 
-#### 4. Install dependency
-We highly recommend to work with a  `venv`  to avoid issues.
-```
+#### 4. Install Dependencies
+
+We recommend using a `venv` to avoid issues.
+
+```bash
 pip install -r requirements.txt
 ```
-##### DONE!!! If you dont have any GPU, You should be able to run roop using `python run.py` command. Keep in mind that while running the program for first time, it will download some models which can take time depending on your network connection.
 
-### *Proceed if you want to use GPU Acceleration
-### CUDA Execution Provider (Nvidia)*
+##### Done!
 
-1.  Install  [CUDA Toolkit 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive)
-    
-2.  Install dependencies:
-    
+If you don't have a GPU, you should be able to run the program using the `python run.py` command. Note that the first run may take time as it will download some models depending on your network speed.
 
-```
+### GPU Acceleration
+
+If you want to use GPU acceleration, follow these steps based on your hardware:
+
+#### CUDA Execution Provider (Nvidia)
+
+1. Install [CUDA Toolkit 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive).
+2. Install dependencies:
+
+```bash
 pip uninstall onnxruntime onnxruntime-gpu
 pip install onnxruntime-gpu==1.16.3
-
 ```
 
-3.  Usage in case the provider is available:
+3. Run with GPU support:
 
-```
+```bash
 python run.py --execution-provider cuda
-
 ```
 
-### [](https://github.com/s0md3v/roop/wiki/2.-Acceleration#coreml-execution-provider-apple-silicon)CoreML Execution Provider (Apple Silicon)
+#### CoreML Execution Provider (Apple Silicon)
 
-1.  Install dependencies:
+1. Install dependencies:
 
-```
+```bash
 pip uninstall onnxruntime onnxruntime-silicon
 pip install onnxruntime-silicon==1.13.1
-
 ```
 
-2.  Usage in case the provider is available:
+2. Run with CoreML support:
 
-```
+```bash
 python run.py --execution-provider coreml
-
 ```
 
-### [](https://github.com/s0md3v/roop/wiki/2.-Acceleration#coreml-execution-provider-apple-legacy)CoreML Execution Provider (Apple Legacy)
+#### CoreML Execution Provider (Apple Legacy)
 
-1.  Install dependencies:
+1. Install dependencies:
 
-```
+```bash
 pip uninstall onnxruntime onnxruntime-coreml
 pip install onnxruntime-coreml==1.13.1
-
 ```
 
-2.  Usage in case the provider is available:
+2. Run with CoreML support:
 
-```
+```bash
 python run.py --execution-provider coreml
-
 ```
 
-### [](https://github.com/s0md3v/roop/wiki/2.-Acceleration#directml-execution-provider-windows)DirectML Execution Provider (Windows)
+#### DirectML Execution Provider (Windows)
 
-1.  Install dependencies:
+1. Install dependencies:
 
-```
+```bash
 pip uninstall onnxruntime onnxruntime-directml
 pip install onnxruntime-directml==1.15.1
-
 ```
 
-2.  Usage in case the provider is available:
+2. Run with DirectML support:
 
-```
+```bash
 python run.py --execution-provider directml
-
 ```
 
-### [](https://github.com/s0md3v/roop/wiki/2.-Acceleration#openvino-execution-provider-intel)OpenVINO™ Execution Provider (Intel)
+#### OpenVINO™ Execution Provider (Intel)
 
-1.  Install dependencies:
+1. Install dependencies:
 
-```
+```bash
 pip uninstall onnxruntime onnxruntime-openvino
 pip install onnxruntime-openvino==1.15.0
-
 ```
 
-2.  Usage in case the provider is available:
+2. Run with OpenVINO support:
 
-```
+```bash
 python run.py --execution-provider openvino
 ```
 
-## How do I use it?
-> Note: When you run this program for the first time, it will download some models ~300MB in size.
+## How to Use the Software
 
-Executing `python run.py` command will launch this window:
+When you run the program for the first time, it will download models (~300MB in size).
+
+Executing `python run.py` will open a window:
+
 ![gui-demo](instruction.png)
 
-Choose a face (image with desired face) and the target image/video (image/video in which you want to replace the face) and click on `Start`. Open file explorer and navigate to the directory you select your output to be in. You will find a directory named `<video_title>` where you can see the frames being swapped in realtime. Once the processing is done, it will create the output file. That's it.
+1. Choose a face image (the image with the face you want to use).
+2. Select the target image or video (the image or video where you want to replace the face).
+3. Click `Start`. 
+4. Choose a directory for the output. A folder named `<video_title>` will be created with the swapped frames. The final output file will be saved there.
 
-## For the webcam mode
-Just follow the clicks on the screenshot
-1. Select a face
-2. Click live
-3. Wait for a few seconds (it takes a longer time, usually 10 to 30 seconds before the preview shows up)
+## Webcam Mode
+
+1. Select a face image.
+2. Click `Live`.
+3. Wait for the preview to appear (this might take 10 to 30 seconds).
 
 ![demo-gif](demo.gif)
 
-Just use your favorite screencapture to stream like OBS
-> Note: In case you want to change your face, just select another picture, the preview mode will then restart (so just wait a bit).
+Use your favorite screen capture tool like OBS for streaming.
 
+To change the face, select a new image. The preview mode will restart, so be patient.
 
-Additional command line arguments are given below. To learn out what they do, check [this guide](https://github.com/s0md3v/roop/wiki/Advanced-Options).
+## Command Line Options
 
-```
+Here are some additional command line arguments you can use. For detailed explanations, check [this guide](https://github.com/s0md3v/roop/wiki/Advanced-Options).
+
+```bash
 options:
-  -h, --help                                               show this help message and exit
-  -s SOURCE_PATH, --source SOURCE_PATH                     select an source image
-  -t TARGET_PATH, --target TARGET_PATH                     select an target image or video
-  -o OUTPUT_PATH, --output OUTPUT_PATH                     select output file or directory
-  --frame-processor FRAME_PROCESSOR [FRAME_PROCESSOR ...]  frame processors (choices: face_swapper, face_enhancer, ...)
-  --keep-fps                                               keep original fps
-  --keep-audio                                             keep original audio
-  --keep-frames                                            keep temporary frames
-  --many-faces                                             process every face
-  --video-encoder {libx264,libx265,libvpx-vp9}             adjust output video encoder
-  --video-quality [0-51]                                   adjust output video quality
-  --max-memory MAX_MEMORY                                  maximum amount of RAM in GB
-  --execution-provider {cpu} [{cpu} ...]                   available execution provider (choices: cpu, ...)
-  --execution-threads EXECUTION_THREADS                    number of execution threads
-  -v, --version                                            show program's version number and exit
+  -h, --help                                               Show this help message and exit
+  -s SOURCE_PATH, --source SOURCE_PATH                     Select a source image
+  -t TARGET_PATH, --target TARGET_PATH                     Select a target image or video
+  -o OUTPUT_PATH, --output OUTPUT_PATH                     Select output file or directory
+  --frame-processor FRAME_PROCESSOR [FRAME_PROCESSOR ...]  Frame processors (e.g., face_swapper, face_enhancer)
+  --keep-fps                                               Keep original fps
+  --keep-audio                                             Keep original audio
+  --keep-frames                                            Keep temporary frames
+  --many-faces                                             Process every face
+  --video-encoder {libx264,libx265,libvpx-vp9}             Adjust output video encoder
+  --video-quality [0-51]                                   Adjust output video quality
+  --max-memory MAX_MEMORY                                  Maximum amount of RAM in GB
+  --execution-provider {cpu} [{cpu} ...]                   Available execution provider (e.g., cpu)
+  --execution-threads EXECUTION_THREADS                    Number of execution threads
+  -v, --version                                            Show program's version number and exit
 ```
 
-Looking for a CLI mode? Using the -s/--source argument will make the run program in cli mode.
+## Want the Latest Update?
 
-## Want the Next Update Now?
-If you want the latest and greatest build, or want to see some new great features, go to our [experimental branch](https://github.com/hacksider/Deep-Live-Cam/tree/experimental) and experience what the contributors have given.
+To get the latest features or updates, visit our [experimental branch](https://github.com/DeSu406/Deep-Live-Cam/tree/experimental) and explore the new developments.
 
 ## Credits
 
-- [ffmpeg](https://ffmpeg.org/): for making video related operations easy
-- [deepinsight](https://github.com/deepinsight): for their [insightface](https://github.com/deepinsight/insightface) project which provided a well-made library and models.
-- [havok2-htwo](https://github.com/havok2-htwo) : for sharing the code for webcam
-- [GosuDRM](https://github.com/GosuDRM/nsfw-roop) : for uncensoring roop
-- and [all developers](https://github.com/hacksider/Deep-Live-Cam/graphs/contributors) behind libraries used in this project.
-- Foot Note: [This is originally roop-cam, see the full history of the code here.](https://github.com/hacksider/roop-cam) Please be informed that the base author of the code is [s0md3v](https://github.com/s0md3v/roop)
+- [FFmpeg](https://ffmpeg.org/): For simplifying video-related operations
+- [deepinsight](https://github.com/deepinsight): For the [insightface](https://github.com/deepinsight/insightface) library and models
+- [havok2-htwo](https://github.com/havok2-htwo): For webcam code contributions
+- [GosuDRM](https://github.com/GosuDRM/nsfw-roop): For uncensoring features
+- And all the developers behind the libraries used in this project
